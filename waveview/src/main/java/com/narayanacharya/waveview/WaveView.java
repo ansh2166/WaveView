@@ -2,7 +2,6 @@ package com.narayanacharya.waveview;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -71,7 +70,7 @@ public class WaveView extends View {
 
     public WaveView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.WaveView);
+        
         try {
             setUp(a);
         } finally {
@@ -81,7 +80,7 @@ public class WaveView extends View {
 
     public WaveView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.WaveView);
+       
         try {
             setUp(a);
         } finally {
@@ -93,36 +92,18 @@ public class WaveView extends View {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public WaveView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.WaveView);
+        
         try {
-            setUp(a);
+            setUp();
         } finally {
-            a.recycle();
+      
         }
     }
 
     /**
      * Initialize the variables to default values.
      */
-    private void setUp(TypedArray typedArray) {
-        if (typedArray != null) {
-            numberOfWaves = typedArray.getInt(R.styleable.WaveView_waveNumberOfWaves,
-                    DEFAULT_NUMBER_OF_WAVES);
-            frequency = typedArray.getFloat(R.styleable.WaveView_waveFrequency, DEFAULT_FREQUENCY);
-            amplitude = typedArray.getFloat(R.styleable.WaveView_waveAmplitude, DEFAULT_AMPLITUDE);
-            phaseShift = typedArray.getFloat(R.styleable.WaveView_wavePhaseShift, DEFAULT_PHASE_SHIFT);
-            density = typedArray.getFloat(R.styleable.WaveView_waveDensity, DEFAULT_DENSITY);
-            primaryWaveLineWidth = typedArray.getFloat(R.styleable.WaveView_wavePrimaryLineWidth,
-                    DEFAULT_PRIMARY_LINE_WIDTH);
-            secondaryWaveLineWidth = typedArray.getFloat(R.styleable.WaveView_waveSecondaryLineWidth,
-                    DEFAULT_SECONDARY_LINE_WIDTH);
-            backgroundColor = typedArray.getColor(R.styleable.WaveView_waveBackgroundColor,
-                    DEFAULT_BACKGROUND_COLOR);
-            waveColor = typedArray.getColor(R.styleable.WaveView_waveColor, DEFAULT_WAVE_COLOR);
-            xAxisPositionMultiplier = typedArray.getFloat(R.styleable.WaveView_waveXAxisPositionMultiplier,
-                    DEFAULT_X_AXIS_POSITION_MULTIPLIER);
-            boundXAxisPositionMultiplier();
-        } else {
+    private void setUp() {
             this.numberOfWaves = DEFAULT_NUMBER_OF_WAVES;
             this.frequency = DEFAULT_FREQUENCY;
             this.amplitude = DEFAULT_AMPLITUDE;
@@ -133,7 +114,6 @@ public class WaveView extends View {
             this.backgroundColor = DEFAULT_BACKGROUND_COLOR;
             this.waveColor = DEFAULT_WAVE_COLOR;
             this.xAxisPositionMultiplier = DEFAULT_X_AXIS_POSITION_MULTIPLIER;
-        }
         initPaintPath();
     }
 
