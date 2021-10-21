@@ -65,27 +65,17 @@ public class WaveView extends View {
 
     public WaveView(Context context) {
         super(context);
-        setUp(null);
+        setUp();
     }
 
     public WaveView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        
-        try {
-            setUp(a);
-        } finally {
-            a.recycle();
-        }
+            setUp();
     }
 
     public WaveView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-       
-        try {
-            setUp(a);
-        } finally {
-            a.recycle();
-        }
+            setUp();
     }
 
     @SuppressWarnings("unused")
